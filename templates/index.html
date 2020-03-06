@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+
+<div class="list-group" style="margin: 50px" data-aos="slide-up" data-aos-duration="1000">
+    {% for mat in dlist %}
+  <a   style="background-color: #B3E5FC" href="/scores/{{ y.index(mat) }}" class="list-group-item list-group-item-action">{{ mat }}</a>
+
+    {% endfor %}
+
+</div>
+
+
+</div>
+
+{% endblock %}

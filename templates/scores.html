@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="sc" data-aos="slide-up" data-aos-duration="1000">
+<center>
+<div class="card border-info text-center" style="max-width: 1000px;margin: 50px;background-color: #B3E5FC" >
+  <img src="https://images.pexels.com/photos/270085/pexels-photo-270085.jpeg?cs=srgb&dl=athletes-audience-ball-bleachers-270085.jpg&fm=jpg" class="card-img-top" alt="cricket" style="align-self: center;width:50%;height: 30%;margin-top: 50px"  >
+  <div class="card-body">
+    <h3 class="card-title">Scorecard</h3>
+    <h4 class="card-text">{{ x[0] }} </h4>
+    <h6> {{ x[7] }}</h6>
+<hr>
+
+      {% for op in x[2] %}
+           <h4>Batting</h4>
+          <h5>Team  : {{ batn }}</h5>
+          <h5>Score : {{ bats }}</h5>
+          <ul class="list-group" >
+  <li class="list-group-item d-flex justify-content-between align-items-center"style="background-color: #81D4FA">
+   Innings
+    <span class="badge badge-primary badge-pill">{{ op['id'] }}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"style="background-color: #81D4FA">
+   Score
+    <span class="badge badge-primary badge-pill">{{ op['score'] }}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"style="background-color: #81D4FA">
+    Wickets
+    <span class="badge badge-primary badge-pill">{{ op['wkts'] }}</span>
+  </li>
+           <li class="list-group-item d-flex justify-content-between align-items-center"style="background-color: #81D4FA">
+   Overs
+    <span class="badge badge-primary badge-pill">{{ op['overs'] }}</span>
+  </li>
+</ul>
+
+
+    {% endfor %}
+<hr>
+
+      {% for op in x[4] %}
+          <h4>Bowling</h4>
+           <h5>Team  : {{ bown }}</h5>
+          <h5>Score : {{ bows }}</h5>
+          <ul class="list-group" >
+  <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+   Innings
+    <span class="badge badge-primary badge-pill">{{ op['id'] }}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+   Score
+    <span class="badge badge-primary badge-pill">{{ op['score'] }}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+    Wickets
+    <span class="badge badge-primary badge-pill">{{ op['wkts'] }}</span>
+  </li>
+           <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+   Overs
+    <span class="badge badge-primary badge-pill">{{ op['overs'] }}</span>
+  </li>
+</ul>
+
+
+    {% endfor %}
+
+  <hr>
+  <h4>Batsman :</h4>
+   {% for bm in batsman %}
+        {% set idid = bm['id']|string()%}
+          <ul class="list-group" >
+  <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+   Batsman
+      <span class="badge badge-primary badge-pill"> {{teamdata[idid]}}{% if bm['strike'] == '1'  %} *{% endif %}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+   Score
+    <span class="badge badge-primary badge-pill">{{ bm['r'] }}({{ bm['b'] }})</span>
+  </li>
+
+</ul>
+
+
+    {% endfor %}
+
+   <hr>
+  <h4>Bowler:</h4>
+   {% for bw in bowler %}
+        {% set idid = bw['id']|string()%}
+          <ul class="list-group" >
+  <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+   Bowler
+    <span class="badge badge-primary badge-pill"> {{teamdata[idid]}}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+   Stats
+    <span class="badge badge-primary badge-pill">{{ bw['r'] }}({{ bw['o'] }})</span>
+  </li>
+           <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #81D4FA">
+   Wickets
+    <span class="badge badge-primary badge-pill">{{ bw['w'] }}</span>
+  </li>
+
+</ul>
+
+
+    {% endfor %}
+
+</div>
+</div>
+</center>
+</div>
+
+
+{% endblock %}
